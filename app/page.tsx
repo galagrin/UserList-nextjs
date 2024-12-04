@@ -4,7 +4,7 @@ import { User } from './interfaces/user';
 
 const fetchData = async () => {
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const response = await fetch('http://jsonplaceholder.typicode.com/users');
         const data: User[] = await response.json();
         return data;
     } catch (error: unknown) {

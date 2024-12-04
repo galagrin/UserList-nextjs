@@ -1,6 +1,6 @@
 import UserIdCard from '@/components/UserIdCard/UserIdCard';
 import Link from 'next/link';
-import { User } from '../interfaces/user';
+import { User } from '../../interfaces/user';
 
 const fetchUserData = async (userId: number) => {
     const response = await fetch(`http://jsonplaceholder.typicode.com/users/${userId}`);

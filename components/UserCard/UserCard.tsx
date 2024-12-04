@@ -19,7 +19,7 @@ const UserCard = ({ user }: { user: User }) => {
             <CardFooter>
                 <button
                     className="bg-gray-200 text-black   py-2 px-4 rounded duration-300 hover:bg-green-800 hover:text-white  transition ease-in-out "
-                    onClick={() => router.push(`/${user.id}`)}
+                    onClick={() => router.push(`/user/${user.id}`)}
                 >
                     more details
                 </button>
