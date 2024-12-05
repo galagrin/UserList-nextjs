@@ -1,20 +1,18 @@
 import UserCard from '@/components/UserCard/UserCard';
-import { notFound } from 'next/navigation';
 import { User } from './interfaces/user';
 
 const fetchData = async () => {
-    try {
-        const response = await fetch('http://jsonplaceholder.typicode.com/users');
-        const data: User[] = await response.json();
-        return data;
-    } catch (error: unknown) {
-        console.log('Error:', error);
+    const response = await fetch('http://jsonplaceholder.typicode.com/users');
+    if (!response.ok) {
+        throw new Error('Failed to fetch');
     }
+    const data: User[] = await response.json();
+    return data;
 };
 
 export default async function Home() {
     const users = await fetchData();
-    if (!users) notFound();
+    await new Promise((resolve) => setTimeout(resolve, 3000)); // Задержка в 3 секунды для проверки загрузчика. Надо убрать потом
 
     return (
         <div className="flex flex-col items-center justify-center mx-auto m-4">
