@@ -12,7 +12,6 @@ const fetchData = async () => {
 
 export default async function Home() {
     const users = await fetchData();
-    await new Promise((resolve) => setTimeout(resolve, 3000)); // Задержка в 3 секунды для проверки загрузчика. Надо убрать потом
 
     return (
         <div className="flex flex-col items-center justify-center mx-auto m-4">
