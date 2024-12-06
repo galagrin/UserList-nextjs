@@ -16,6 +16,7 @@ export default async function Home() {
     return (
         <div className="flex flex-col items-center justify-center mx-auto m-4">
             <h1 className="text-3xl font-bold text-center mb-4">Users List</h1>
+
             <div className="flex flex-wrap justify-center ">{users && users.map((user: User) => <UserCard key={user.id} user={user} />)}</div>
         </div>
     );

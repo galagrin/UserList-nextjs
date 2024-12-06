@@ -1,5 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import Skeleton from '@/components/ui/skeleton';
 
 export default function Loading() {
     return (
@@ -7,22 +6,22 @@ export default function Loading() {
             <Skeleton className="w-64 h-12 mb-4" />
             <div className="flex justify-center gap-4 flex-wrap">
                 {Array.from({ length: 10 }).map((_, index) => (
-                    <Card className="m-4 w-1/3" key={index}>
-                        <CardHeader>
-                            <CardTitle>
+                    <div className="m-4 w-1/3 rounded-lg border bg-card text-card-foreground shadow-sm" key={index}>
+                        <div className="flex flex-col space-y-1.5 p-6">
+                            <div className="text-2xl font-semibold leading-none tracking-tight">
                                 <Skeleton className="h-4 grow" />
-                            </CardTitle>
-                            <CardDescription>
+                            </div>
+                            <div className="text-sm text-muted-foreground">
                                 <Skeleton className="h-4 grow " />
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
+                            </div>
+                        </div>
+                        <div className="p-6 pt-0">
                             <Skeleton className="h-12 grow " />
-                        </CardContent>
-                        <CardFooter>
+                        </div>
+                        <div className="flex items-center p-6 pt-0">
                             <Skeleton className="h-12 w-1/3 " />
-                        </CardFooter>
-                    </Card>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>

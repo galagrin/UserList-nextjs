@@ -1,26 +1,26 @@
-import { Skeleton } from '@/components/ui/skeleton';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+// import { Skeleton } from '@/components/ui/skeleton';
+import Skeleton from '@/components/ui/skeleton';
 
 export default function Loading() {
     return (
         <div className="flex flex-col items-center justify-center mx-auto m-4">
             <Skeleton className="w-64 h-12 mb-4" />
-            <Card className="min-h-96 w-1/3">
-                <CardHeader>
-                    <CardTitle>
-                        <Skeleton className="h-4 grow" />
-                    </CardTitle>
-                    <CardDescription>
+            <div className="min-h-96 w-1/3 rounded-lg border bg-card text-card-foreground shadow-sm">
+                <div className="flex flex-col space-y-1.5 p-6">
+                    <div className="text-2xl font-semibold leading-none tracking-tight">
                         <Skeleton className="h-4 grow " />
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                        <Skeleton className="h-4 grow " />
+                    </div>
+                </div>
+                <div className="p-6 pt-0">
                     <Skeleton className="h-12 grow " />
-                </CardContent>
-                <CardFooter>
+                </div>
+                <div className="flex items-center p-6 pt-0">
                     <Skeleton className="h-12 grow " />
-                </CardFooter>
-            </Card>
+                </div>
+            </div>
         </div>
     );
 }
