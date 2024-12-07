@@ -13,8 +13,8 @@ const CustomUserIdCard = ({ loading, user }: { loading: boolean; user?: User }) 
             <div className="self-center p-6 pt-0">
                 {loading ? (
                     <>
-                        <Skeleton className="h-12 w-64 m-6" />
-                        <Skeleton className="h-4 w-64 n-6" />
+                        <Skeleton className="h-8 w-64 m-6" />
+                        <Skeleton className="h-8 w-64 m-6" />
                     </>
                 ) : (
                     <>

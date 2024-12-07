@@ -1,4 +1,3 @@
-import UserCard from '@/components/UserCard/UserCard';
 import { User } from './interfaces/user';
 import CustomUserCard from '@/components/CustomUserCard/CustomUserCard';
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { User } from '../../interfaces/user';
-import UserIdCard from '@/components/UserIdCard/UserIdCard';
+
 import CustomUserIdCard from '@/components/CustomUserIdCard/CustomUserIdCard';
 
 const fetchUserData = async (userId: number) => {
@@ -11,9 +11,7 @@ const fetchUserData = async (userId: number) => {
 
 export default async function UserIdPage({ params }: { params: { userId: number } }) {
     const { userId } = await params;
-    const delay = new Promise((resolve) => setTimeout(resolve, 3000));
     const user: User = await fetchUserData(userId);
-    await delay;
 
     return (
         <div className="flex flex-col justify-center items-center">

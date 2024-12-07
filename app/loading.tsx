@@ -7,7 +7,7 @@ export default function Loading() {
             <Skeleton className="w-64 h-12 mb-4" />
             <div className="flex justify-center gap-4 flex-wrap">
                 {Array.from({ length: 10 }).map((_, index) => (
-                    <CustomUserCard user={undefined} loading={true} />
+                    <CustomUserCard loading={true} key={index} />
                 ))}
             </div>
         </div>

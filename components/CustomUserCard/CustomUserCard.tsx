@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { User } from '@/app/interfaces/user';
 import Skeleton from '@/components/ui/skeleton';
 
-const CustomUserCard = ({ loading, user }: { user?: User; loading: boolean }) => {
+const CustomUserCard = ({ loading, user }: { loading: boolean; user?: User }) => {
     const router = useRouter();
     return (
         <div className="m-4 w-1/3 shadow-green-800/50 shadow-md animate-fadeIn rounded-lg border bg-card text-card-foreground ">
