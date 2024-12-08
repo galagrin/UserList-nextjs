@@ -1,27 +1,7 @@
 'use client';
-import { User } from '@/app/interfaces/user';
-import { useState } from 'react';
-import CustomUserCard from '../CustomUserCard/CustomUserCard';
+import { SearchProps } from '@/app/interfaces/search';
 
-const Search = ({ data }: { data: User[] }) => {
-    const [inputValue, setInputValue] = useState<string>('');
-    const [foundUsers, setFoundUsers] = useState<User[]>([]);
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.target.value);
-    };
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (inputValue === '') {
-            return;
-        }
-
-        const matchedUser = data.filter((user) => user.name.toLowerCase().includes(inputValue.toLowerCase()));
-        console.log(matchedUser);
-        setFoundUsers(matchedUser);
-        setInputValue('');
-    };
-
+const Search = ({ handleSubmit, handleInputChange, inputValue }: SearchProps) => {
     return (
         <>
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -39,13 +19,6 @@ const Search = ({ data }: { data: User[] }) => {
                     search
                 </button>
             </form>
-            {foundUsers.length > 0 && (
-                <div className="flex w-svw justify-center">
-                    {foundUsers.map((user) => (
-                        <CustomUserCard key={user.id} loading={false} user={user} />
-                    ))}
-                </div>
-            )}
         </>
     );
 };
