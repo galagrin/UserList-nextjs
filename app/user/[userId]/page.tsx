@@ -45,9 +45,15 @@ const fetchUserData = async (userId: number): Promise<User> => {
     const data: User = await response.json();
     return data;
 };
+interface PageProps {
+    params: {
+        userId: string;
+    };
+    searchParams?: { [key: string]: string | string[] | undefined };
+}
 
-const UserIdPage = async ({ params }: { params: { userId: string } }) => {
-    const { userId } = params;
+const UserIdPage = async ({ params }: PageProps) => {
+    const { userId } = await params;
     const userIdNumber = parseInt(userId);
     const user: User = await fetchUserData(userIdNumber);
 
