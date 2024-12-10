@@ -6,9 +6,9 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
-        "deploy": "next build && next export && touch out/.nojekyll && gh-pages -d out"
+        "lint": "next lint"
     },
+    "homepage": "https://galagrin.github.io/UserList-nextjs",
     "dependencies": {
         "autoprefixer": "^10.4.20",
         "class-variance-authority": "^0.7.1",
