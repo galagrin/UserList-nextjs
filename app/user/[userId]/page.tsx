@@ -18,10 +18,11 @@ const fetchUserData = async (userId: number): Promise<User> => {
 export default async function UserIdPage({
     params,
 }: {
-    params: { userId: number };
+    params: Promise<{ userId: string }>;
 }) {
     const { userId } = await params;
-    const user: User = await fetchUserData(userId);
+    const numericUserId = Number(userId);
+    const user: User = await fetchUserData(numericUserId);
 
     return (
         <div className="flex flex-col justify-center items-center">
