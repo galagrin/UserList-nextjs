@@ -41,11 +41,13 @@
 import Link from "next/link";
 import { User } from "../../interfaces/user";
 import CustomUserIdCard from "@/components/CustomUserIdCard/CustomUserIdCard";
+import { notFound } from "next/navigation";
 
 async function getUsers(): Promise<User[]> {
     try {
         const response = await fetch(
-            "https://jsonplaceholder.typicode.com/users"
+            `https://jsonplaceholder.typicode.com/users`,
+            { next: { revalidate: 3600 } }
         );
         if (!response.ok) {
             throw new Error(`Failed to fetch users: ${response.statusText}`);
@@ -53,7 +55,17 @@ async function getUsers(): Promise<User[]> {
         return response.json();
     } catch (error) {
         console.error("Error fetching users:", error);
-        throw error;
+        return [];
+    }
+}
+
+async function getUser(userId: string): Promise<User | undefined> {
+    try {
+        const users = await getUsers();
+        return users.find((user) => user.id.toString() === userId);
+    } catch (error) {
+        console.error("Error finding user:", error);
+        return undefined;
     }
 }
 
@@ -69,11 +81,10 @@ export default async function UserIdPage({
 }: {
     params: { userId: string };
 }) {
-    const users = await getUsers();
-    const user = users.find((user) => user.id === Number(params.userId));
+    const user = await getUser(params.userId);
 
     if (!user) {
-        throw new Error("User not found");
+        notFound();
     }
 
     return (
