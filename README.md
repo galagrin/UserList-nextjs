@@ -52,6 +52,4 @@ A simple Next.js application that displays a list of users and their details usi
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-Here's the revised README for your UserList Next.js application, incorporating your requests:
 
----
