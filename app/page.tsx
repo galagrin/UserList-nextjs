@@ -1,10 +1,10 @@
-import { User } from './interfaces/user';
-import CardsContainer from '@/components/CardsContainer/CardsContainer';
+import { User } from "./interfaces/user";
+import CardsContainer from "@/components/CardsContainer/CardsContainer";
 
 const fetchData = async () => {
-    const response = await fetch('http://jsonplaceholder.typicode.com/users');
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
     if (!response.ok) {
-        throw new Error('Failed to fetch');
+        throw new Error("Failed to fetch");
     }
     const data: User[] = await response.json();
     return data;
