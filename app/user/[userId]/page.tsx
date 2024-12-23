@@ -42,34 +42,39 @@ import Link from "next/link";
 import { User } from "../../interfaces/user";
 import CustomUserIdCard from "@/components/CustomUserIdCard/CustomUserIdCard";
 
-const fetchUserData = async (userId: number): Promise<User> => {
+async function getUsers(): Promise<User[]> {
     try {
         const response = await fetch(
-            `https://jsonplaceholder.typicode.com/users/${userId}`
+            "https://jsonplaceholder.typicode.com/users"
         );
-
         if (!response.ok) {
-            throw new Error(
-                `Failed to fetch user data: ${response.statusText}`
-            );
+            throw new Error(`Failed to fetch users: ${response.statusText}`);
         }
-
-        const data: User = await response.json();
-        return data;
+        return response.json();
     } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error fetching users:", error);
         throw error;
     }
-};
+}
+
+export async function generateStaticParams() {
+    const users = await getUsers();
+    return users.map((user) => ({
+        userId: user.id.toString(),
+    }));
+}
 
 export default async function UserIdPage({
     params,
 }: {
     params: { userId: string };
 }) {
-    const { userId } = await params;
-    const numericUserId = Number(userId);
-    const user: User = await fetchUserData(numericUserId);
+    const users = await getUsers();
+    const user = users.find((user) => user.id === Number(params.userId));
+
+    if (!user) {
+        throw new Error("User not found");
+    }
 
     return (
         <div className="flex flex-col justify-center items-center">
